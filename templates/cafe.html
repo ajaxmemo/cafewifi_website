@@ -1,0 +1,199 @@
+
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{cafe.img_url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+              {% if vote == 100 %}
+            <div class="green_box score">
+             {% elif vote< 100 and vote > 49 %}
+                <div class="orange_box score">
+             {% else %}
+                    <div class="red_box score">
+               {% endif %}
+              <i class="far fa-heart grey" style="color:white"></i>
+               | {{vote}}% Laptop Friendly
+
+            </div>
+            <h1>{{cafe.name}}</h1>
+            <h2 class="subheading"></h2>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<hr>
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+             <div class="row ">
+            <div class="col-lg-4">
+              <h3>Productivity</h3>
+            </div>
+             <div class="col-lg-8" style="padding:10px">
+              <div class="row" style="margin-left: 14px">
+                  {% if cafe.has_wifi == 1 %}
+                    <div class="col-6 active" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-wifi"></i>
+                  Stable Wi-Fi
+                  <hr>
+                   </div>
+                  {% else %}
+                  <div class="col-6 deactive" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-wifi"></i>
+                  Stable Wi-Fi
+                  <hr>
+                   </div>
+                  {% endif %}
+                  {% if cafe.has_sockets == 1 %}
+                    <div class="col-6 active" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-battery-empty"></i>
+                  Power Sockets
+                    <hr>
+                   </div>
+                  {% else %}
+                    <div class="col-6 deactive" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-battery-empty"></i>
+                  Power Sockets
+                    <hr>
+                   </div>
+                  {% endif %}
+                  {% if cafe.has_toilet == 1 %}
+                    <div class="col-6 active" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-toilet"></i>
+                  Toilet
+                    <hr>
+                   </div>
+                  {% else %}
+                    <div class="col-6 deactive" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-toilet"></i>
+                  Toilet
+                    <hr>
+                   </div>
+                  {% endif %}
+                  {% if cafe.can_take_calls == 1 %}
+                    <div class="col-6 active" style="margin-bottom: 14px">
+                 <i class="fa-solid fa-phone"></i>
+                  Call Availability
+                    <hr>
+                   </div>
+                  {% else %}
+                 <div class="col-6 deactive" style="margin-bottom: 14px">
+                 <i class="fa-solid fa-phone"></i>
+                  Call Availability
+                    <hr>
+                   </div>
+                  {% endif %}
+
+
+
+                </div>
+              </div>
+            </div>
+            <hr>
+                <div class="row ">
+            <div class="col-lg-4">
+              <h3>Service</h3>
+            </div>
+             <div class="col-lg-8" style="padding:10px">
+              <div class="row" style="margin-left: 14px">
+                <div class="col-6 active" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-chair"></i>
+                    {{cafe.seats}} seats
+                  <hr>
+                   </div>
+                <div class="col-6 active" style="margin-bottom: 14px">
+                  <i class="fa-solid fa-money-bill-1"></i>
+                    Coffee Price {{cafe.coffee_price}}
+                    <hr>
+                   </div>
+
+                </div>
+              </div>
+            </div>
+              <hr>
+                <div class="row ">
+            <div class="col-lg-4">
+              <h3>Location</h3>
+            </div>
+             <div class="col-lg-8" style="padding:10px">
+              <div class="row" style="margin-left: 14px">
+                <div class="col-8 active" style="margin-bottom: 14px">
+                    <a href="{{cafe.map_url}}" style="text-decoration:none; color:black">
+                 <i class="fa fa-fw fa-map-marker-alt"></i>
+                    {{cafe.location}}
+                    </a>
+                  <hr>
+                   </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-lg-6" style="text-align:center">
+            <h5>Do you like working from here?</h5>
+            <div class="row" style="margin: 29px 116px;">
+                <div class="col-4"><i class="fa-solid fa-heart-crack rating bad_heart"></i></div>
+                <div class="col-4"><i class="fa-solid fa-heart rating average_heart"></i></div>
+                <div class="col-4"><i class="fa-solid fa-heart rating good_heart"></i></div>
+            </div>
+            <hr>
+            <h5>Share your important feedback?</h5>
+            <a class="btn btn-success leave_review mb-3" href="{{ url_for('review', cafe_id=cafe.id) }}"> <i class="fa-solid fa-comment"></i> Leave a review!</a>
+            <br>
+
+            <hr>
+            <h5>Missing or incorrect information?</h5>
+            <div class="row my-4" >
+                <div class="col-6">
+                    <a class="btn btn-sm btn-default btn-block" href="{{ url_for('edit_cafe', cafe_id=cafe.id) }}"><i class="fa fa-fw fa-edit"></i>
+                    Update page
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-sm btn-default btn-block" href=""><i class="far fa-fw fa-flag"></i>
+                    Report Closed
+                    </a>
+                </div>
+            </div>
+          </div>
+      </div>
+
+        {% for comment in cafe.comments: %}
+        <hr>
+                    <ul class="commentList">
+                        <li>
+                            <div class="commenterImage">
+                                 <img src="{{ comment.comment_author.email | gravatar }}"/>
+                            </div>
+                            <div class="commentText">
+                                {{comment.text|safe}}
+                                <span class="date sub-text">{{comment.comment_author.name}}</span>
+
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+
+        <hr>
+        <a href="{{ url_for('get_all_cafes') }}" style="text-decoration:none"><i class="fa fa-fw fa-caret-left"></i>
+    Explore more work-friendly places in London!
+    </a>
+    </div>
+  </article>
+
+
+{% include "footer.html" %}
+
+
+
+
+

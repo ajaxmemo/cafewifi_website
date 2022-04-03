@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('get_all_cafes') }}"><i class="fa-solid fa-laptop"></i> Cafe&Wifi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup" style="justify-content:right">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active mx-2" href="{{ url_for('get_all_cafes') }}"><i class="fa-solid fa-house-user"></i> Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link mx-2" href="#"><i class="fa-solid fa-earth-africa"></i> All Cities</a>
+        <a class="nav-item nav-link mx-2" href="#"><i class="fa-solid fa-circle-plus"></i> Suggest Place</a>
+        {% if not logged_in: %}
+        <a class="nav-item nav-link mx-2" href="{{ url_for('register') }}"><i class="fa fa-fw fa-users"></i> Join Community</a>
+        {% endif %}
+        {% if logged_in: %}
+         <a class="nav-item nav-link mx-2" href="{{ url_for('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+        {% endif %}
+    </div>
+  </div>
+</nav>
+

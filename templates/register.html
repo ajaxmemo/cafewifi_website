@@ -1,0 +1,30 @@
+{% include "header.html" %}
+<div class="text-center my-5">
+    <br>
+    <br>
+    <h3>Sign Up</h3>
+    <br>
+    <p class="my-3">Fill in the form</p>
+    <form class="register" action="{{ url_for('register') }}" method="post" id="register">
+    <div class="box">
+     <input type="text" class="form-control" name="fname" id="fname" aria-describedby="emailHelp" placeholder="Full Name">
+      <br>
+     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
+        <br>
+     <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Password">
+        <br>
+     <input type="password" class="form-control" name="cpassword" id="cpassword" aria-describedby="emailHelp" placeholder="Confirm Password">
+
+        <br>
+        <input type="submit" name="commit" value="Register" class="btn btn-default" data-disable-with="Register">
+
+
+     </div>
+    </form>
+        <section class="my-5">
+    Already a member?
+    <a href="{{ url_for('sigin') }}"><i class="fa fa-fw fa-caret-right"></i>Log in
+    </a></section>
+</div>
+{% include "footer.html" %}
+

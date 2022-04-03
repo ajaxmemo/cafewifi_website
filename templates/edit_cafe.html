@@ -1,0 +1,105 @@
+{% include "header.html" %}
+
+<div class="container my-3">
+    <h2>EZO BISTRO - EDIT PAGE</h2>
+    <p>Note: For "Unknown" criteria, leave blank or deselect an already chosen option.</p>
+    <form class="edit_form" action="{{ url_for('edit_cafe', cafe_id=cafe.id) }}" method="post" id="edit_form" novalidate="novalidate">
+    <div class="block my-5">
+        <h3>Productivity</h3>
+        <div class="row my-4">
+            <div class="col-6">
+                <p><i class="fa-solid fa-wifi"></i> Is there any wifi?</p>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="has_wifi" id="has_wifi">
+                {% if cafe.has_wifi == 1 %}
+                <option value="1" selected>Yes</option>
+                <option value="0">No</option>
+                {% else %}
+                <option value="1">Yes</option>
+                <option value="0" selected>No</option>
+                {% endif %}
+
+            </select>
+            </div>
+              <div class="col-6">
+                <p><i class="fa fa-fw fa-plug"></i>  Is it easy to find power sockets?</p>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="has_sockets" id="has_sockets">
+
+              {% if cafe.has_sockets == 1 %}
+                <option value="1" selected>Yes</option>
+                <option value="0">No</option>
+                {% else %}
+                <option value="1">Yes</option>
+                <option value="0" selected>No</option>
+                {% endif %}
+
+            </select>
+            </div>
+            <div class="col-6">
+                <p><i class="fa-solid fa-toilet"></i> Is there any Toilet?</p>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="has_toilet" id="has_toilet">
+
+               {% if cafe.has_toilet == 1 %}
+                <option value="1" selected>Yes</option>
+                <option value="0">No</option>
+                {% else %}
+                <option value="1">Yes</option>
+                <option value="0" selected>No</option>
+                {% endif %}
+
+            </select>
+            </div>
+            <div class="col-6">
+                <p><i class="fa-solid fa-phone"></i> Is there Call availabaility?</p>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="can_take_calls" id="can_take_calls">
+
+               {% if cafe.can_take_calls == 1 %}
+                <option value="1" selected>Yes</option>
+                <option value="0">No</option>
+                {% else %}
+                <option value="1">Yes</option>
+                <option value="0" selected>No</option>
+                {% endif %}
+
+            </select>
+            </div>
+        </div>
+
+    </div>
+     <div class="block my-5">
+        <h3>Service</h3>
+        <div class="row my-4">
+            <div class="col-6">
+                <p><i class="fa-solid fa-chair"></i> How many seats are there?</p>
+            <input type="text" class="form-control"  aria-describedby="emailHelp" name="seats" id="seats" value="{{ cafe.seats}}">
+            </div>
+              <div class="col-6">
+                <p><i class="fa-solid fa-money-bill-1"></i> How much does a coffee cost?</p>
+              <input type="text" class="form-control"  aria-describedby="emailHelp" name="coffee_price" id="coffee_price" value="{{ cafe.coffee_price}}">
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="block my-5">
+        <h3>Location</h3>
+        <div class="row my-4">
+            <div class="col-6">
+                <p><i class="fa fa-fw fa-map-marker-alt"></i> Where is this cafe located?</p>
+            <input type="text" class="form-control"  aria-describedby="emailHelp" name="location" id="location" value="{{cafe.location }}">
+            </div>
+              <div class="col-6">
+                <p><i class="fa-solid fa-map-location"></i> What is the map url?</p>
+              <input type="text" class="form-control"  aria-describedby="emailHelp" name="map_url" id="map_url" value="{{cafe.map_url }}">
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="block my-5">
+    <input type="submit" name="commit" value="Submit review" class="btn btn-lg btn-success" data-disable-with="Submit review">
+    </div>
+    </form>
+</div>
+{% include "footer.html" %}

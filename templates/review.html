@@ -1,0 +1,35 @@
+{% include "header.html" %}
+
+<div class="container my-3">
+    <h2>EZO BISTRO - REVIEW</h2>
+    <p>Note: For "Unknown" criteria, leave blank or deselect an already chosen option.</p>
+    <form class="edit_form" action="{{ url_for('review', cafe_id=cafe.id) }}" method="post" id="edit_form" novalidate="novalidate">
+
+
+    <div class="block my-5">
+        <h3>Review</h3>
+        <div class="row my-4">
+            <div class="col-6">
+                <p><i class="fa-solid fa-heart"></i> Do you like working from here?</p>
+            <select class="form-select" aria-label="Default select example" name="like" id="like">
+
+              <option value="100">I feel very productive here</option>
+              <option value="50">I got some work done</option>
+              <option value="0">It's uncomfortable for work</option>
+            </select>
+            </div>
+              <div class="col-6">
+                <p><i class="fa-solid fa-comment"></i> Give your important feedback</p>
+              <textarea class="form-control"  aria-describedby="emailHelp" name="comment" id="comment" rows="1" cols="50">Nice place for remotely work
+                </textarea>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="block my-5">
+    <input type="submit" name="commit" value="Submit review" class="btn btn-lg btn-success" data-disable-with="Submit review">
+    </div>
+    </form>
+</div>
+{% include "footer.html" %}

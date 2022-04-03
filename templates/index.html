@@ -1,0 +1,29 @@
+
+{% include "header.html" %}
+
+  <div class="body row mx-2">
+    <div class="col-lg-7 overflow_div">
+      <h1>London</h1>
+      <p>The best work and study-friendly cafes, restaurants, and hotel lobbies in London. Find venues with free and reliable Wi-Fi hotspots, ample power sockets, and comfy seating areas.
+      </p>
+        <hr>
+      <div class="row">
+        {% for cafe in all_Cafes %}
+          <div class="cafe_card col-lg-5 m-3">
+            <h4 style="color:#e2810d"><a href="{{ url_for('show_cafe', cafe_id=cafe.id) }}">{{ cafe.name }}</a></h4>
+            <img src="{{ cafe.img_url }}" class="card_prof">
+            <p><i class="fa-solid fa-location-arrow"></i> {{ cafe.location }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+   <div class="col-lg-5 map_div">
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317715.71193692513!2d-0.38178583985785625!3d51.528735196048615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sin!4v1648669771041!5m2!1sen!2sin" width="600" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+
+  </div>
+
+{% include "footer.html" %}

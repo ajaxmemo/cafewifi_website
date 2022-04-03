@@ -1,0 +1,36 @@
+{% include "header.html" %}
+<div class="text-center my-5">
+    <br>
+    <br>
+    <h3>Sign In</h3>
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+                {% for message in messages %}
+                <br>
+                  <p style="color:red">{{ message }}</p>
+                {% endfor %}
+
+            {% endif %}
+        {% endwith %}
+    <br>
+    <p class="my-3">Use your email & password to login</p>
+    <form class="sigin" action="{{ url_for('sigin') }}" method="post" id="sigin">
+    <div class="box">
+
+     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
+        <br>
+     <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Password">
+ <br>
+        <input type="submit" name="commit" value="Log In" class="btn btn-default" data-disable-with="Register">
+
+
+     </div>
+    </form>
+        <section class="my-5">
+    New to LaptopFriendly?
+    <a href="{{ url_for('register') }}"><i class="fa fa-fw fa-caret-right"></i>Sign Up
+    </a></section>
+</div>
+{% include "footer.html" %}
+
