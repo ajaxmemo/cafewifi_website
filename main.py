@@ -186,6 +186,31 @@ def review(cafe_id):
 
     return render_template("review.html", cafe=requested_cafe, logged_in=current_user.is_authenticated)
 
+@app.route("/add", methods=[ 'GET', 'POST'])
+def add_cafe():
+    if request.method == "POST":
+        if not current_user.is_authenticated:
+            flash("You need to login or register to suggest a place.")
+            return redirect(url_for("sigin"))
+        new_cafe = Cafe(
+            name=request.form["cname"],
+            map_url=request.form["map"],
+            img_url=request.form["img"],
+            location=request.form["location"],
+            has_toilet=int(request.form["toilet"]),
+            has_wifi=int(request.form["wifi"]),
+            has_sockets=int(request.form["sockets"]),
+            can_take_calls=int(request.form["call"]),
+            coffee_price=request.form["coffee_price"],
+            seats=request.form["seats"],
+
+        )
+        db.session.add(new_cafe)
+        db.session.commit()
+        return redirect(url_for("get_all_cafes"))
+
+
+    return render_template("add_cafe.html")
 
 
 if __name__ == "__main__":

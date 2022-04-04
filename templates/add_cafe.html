@@ -1,0 +1,66 @@
+{% include "header.html" %}
+<div class="text-center my-5">
+    <br>
+    <br>
+    <h3>Add Cafe</h3>
+
+    <p class="my-3">Fill all the fields</p>
+    <form class="register" action="{{ url_for('add_cafe') }}" method="post" id="add_cafe">
+    <div class="box">
+     <input type="text" class="form-control" name="cname" id="cname" aria-describedby="emailHelp" placeholder="Cafe Name">
+      <br>
+     <input type="text" class="form-control" name="location" id="location" aria-describedby="emailHelp" placeholder="Cafe Location">
+        <br>
+     <input type="text" class="form-control" name="img" id="img" aria-describedby="emailHelp" placeholder="Image Url">
+        <br>
+     <input type="text" class="form-control" name="map" id="map" aria-describedby="emailHelp" placeholder="Map Url">
+        <br>
+    <div class="form-group">
+      <select class="form-control" id="wifi" name="wifi">
+        <option selected disabled>Has Wifi?</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+
+      </select>
+        </div>
+        <br>
+    <div class="form-group">
+      <select class="form-control" id="sockets" name="sockets">
+        <option selected disabled>Has Sockets?</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+
+      </select>
+        </div>
+        <br>
+    <div class="form-group">
+      <select class="form-control" id="toilet" name="toilet">
+        <option selected disabled>Has Toilet?</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+
+      </select>
+        </div>
+        <br>
+    <div class="form-group">
+      <select class="form-control" id="call" name="call">
+        <option selected disabled>Can take call?</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+
+      </select>
+        </div>
+        <br>
+     <input type="text" class="form-control" name="coffee_price" id="coffee_price" aria-describedby="emailHelp" placeholder="Coffee Price">
+        <br>
+     <input type="text" class="form-control" name="seats" id="seats" aria-describedby="emailHelp" placeholder="No of Seats">
+        <br>
+        <input type="submit" name="commit" value="Submit" class="btn btn-default" data-disable-with="Register">
+
+
+     </div>
+    </form>
+
+</div>
+{% include "footer.html" %}
+
