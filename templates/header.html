@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Wifi & Cafes</title>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -20,7 +20,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active mx-2" href="{{ url_for('get_all_cafes') }}"><i class="fa-solid fa-house-user"></i> Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link mx-2" href="#"><i class="fa-solid fa-earth-africa"></i> All Cities</a>
-        <a class="nav-item nav-link mx-2" href="#"><i class="fa-solid fa-circle-plus"></i> Suggest Place</a>
+        <a class="nav-item nav-link mx-2" href="{{ url_for('add_cafe') }}"><i class="fa-solid fa-circle-plus"></i> Suggest Place</a>
         {% if not logged_in: %}
         <a class="nav-item nav-link mx-2" href="{{ url_for('register') }}"><i class="fa fa-fw fa-users"></i> Join Community</a>
         {% endif %}
