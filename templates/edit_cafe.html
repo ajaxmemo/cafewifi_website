@@ -1,7 +1,7 @@
 {% include "header.html" %}
 
 <div class="container my-3">
-    <h2>EZO BISTRO - EDIT PAGE</h2>
+    <h2>{{cafe.name}} - EDIT PAGE</h2>
     <p>Note: For "Unknown" criteria, leave blank or deselect an already chosen option.</p>
     <form class="edit_form" action="{{ url_for('edit_cafe', cafe_id=cafe.id) }}" method="post" id="edit_form" novalidate="novalidate">
     <div class="block my-5">
